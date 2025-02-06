@@ -4,7 +4,7 @@ export default function Transaction() {
   return (
     <div className="row m-0">
       <div className="row text-center col-md-12 mt-3">
-        <h1 className="text-white">Login</h1>
+        <h1 className="text-black">Login</h1>
       </div>
       <div className="row mt-5 justify-content-center align-items-center">
         <div className="form_user col-md-4 bg-white">

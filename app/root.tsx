@@ -45,7 +45,7 @@ export default function App() {
   return (
     <div className="container-layout">
       <CustomNavbar />
-      <Outlet />
+      <Outlet  />
       <Footer />
     </div>
   );

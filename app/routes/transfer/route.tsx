@@ -4,10 +4,10 @@ export default function Transaction() {
   return (
     <div className="row m-0">
       <div className="row text-center col-md-12 mt-3">
-        <h1 className="text-white">Transaction</h1>
+        <h1 className="text-black">Transaction</h1>
       </div>
       <div className="row mt-4 justify-content-center align-items-center">
-        <div className="transactionForm col-md-5 bg-light">
+        <div className="transactionForm col-md-5 bg-white">
           <form className="TransactionForm">
             <div className="form_center row justify-content-center">
               <div className="col">
