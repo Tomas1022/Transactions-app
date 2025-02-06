@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlserver"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -26,4 +26,5 @@ model Transfer {
   stripePaymentId String?
   createdAt       DateTime @default(now())
   recipient       User     @relation("ReceivedTransfers", fields: [recipientId], references: [id])
+  t               DateTime @default(now())
 }
