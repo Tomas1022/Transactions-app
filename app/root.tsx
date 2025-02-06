@@ -6,14 +6,12 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import bootstrapCSS from "bootstrap/dist/css/bootstrap.min.css";
-import './node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 
 import "./tailwind.css";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: bootstrapCSS },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
