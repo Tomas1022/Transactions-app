@@ -1,12 +1,11 @@
+import "./navbar.css";
 import { Link } from "@remix-run/react";
 
 export default function CustomNavbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Logo
-        </Link>
+        <img src="" alt="logo" className="avatar"></img>
         <button
           className="navbar-toggler"
           type="button"
@@ -28,6 +27,11 @@ export default function CustomNavbar() {
             <li className="nav-item">
               <Link className="nav-link" to="transfer">
                 Transfers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="movements">
+                Movements
               </Link>
             </li>
             <li className="nav-item">
