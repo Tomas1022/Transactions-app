@@ -6,14 +6,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import bootstrapCSS from "bootstrap/dist/css/bootstrap.min.css";
-import './node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-
-import "./tailwind.css";
+import CustomNavbar from "./feature/navbar/navbar";
+import Footer from "./feature/footer/footer";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: bootstrapCSS },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -45,5 +42,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="container-layout">
+      <CustomNavbar />
+      <Outlet />
+      <Footer />
+    </div>
+  );
 }
