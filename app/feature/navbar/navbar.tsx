@@ -5,7 +5,7 @@ export default function CustomNavbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <img src="" alt="logo" className="avatar"></img>
+        <img src="" alt="" className="avatar"></img>
         <button
           className="navbar-toggler"
           type="button"
@@ -37,6 +37,11 @@ export default function CustomNavbar() {
             <li className="nav-item">
               <Link className="nav-link" to="profile">
                 Profile
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="notification-btn" to="">
+                🔔
               </Link>
             </li>
           </ul>
