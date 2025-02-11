@@ -39,12 +39,10 @@ export default function CustomNavbar() {
                 Profile
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="notification-btn" to="">
-                🔔
-              </Link>
-            </li>
           </ul>
+          <Link className="nav-link notification-btn" to="/">
+            🔔
+          </Link>
         </div>
       </div>
     </nav>
