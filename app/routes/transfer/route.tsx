@@ -1,6 +1,24 @@
 import "./transfers.css";
+import { useActionData, Form } from "@remix-run/react";
 
-export default function Transaction() {
+
+export const loader = async () => {
+  return ({ message: "Complete los datos para la transacción" });
+};
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const transaction = {
+    receptor: formData.get("receptor"),
+    amount: formData.get("amount"),
+    message: formData.get("message"),
+  };
+
+  console.log("Formulario enviado:", transaction);
+  return { success: true, transaction };
+};
+export default function TransactionForm() {
+  const actionData = useActionData(); 
   return (
     <div className="row m-0">
       <div className="row text-center col-md-12 mt-3">
@@ -8,14 +26,19 @@ export default function Transaction() {
       </div>
       <div className="row mt-4 justify-content-center align-items-center">
         <div className="transactionForm col-md-5 bg-white">
-          <form className="TransactionForm">
+          <Form method="post" className="TransactionForm">
             <div className="form_center row justify-content-center">
               <div className="col">
                 <fieldset className="form_fieldset">
                   <label htmlFor="receptor" className="form-label">
                     Receptor
                   </label>
-                  <input type="" className="form-control" id="receptor" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="receptor"
+                    required
+                  />
                 </fieldset>
               </div>
               <div className="w-100"></div>
@@ -24,7 +47,12 @@ export default function Transaction() {
                   <label htmlFor="amount" className="form-label">
                     Amount
                   </label>
-                  <input type="number" className="form-control" id="amount" />
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="amount"
+                    required
+                  />
                 </fieldset>
               </div>
               <div className="w-100"></div>
@@ -33,7 +61,12 @@ export default function Transaction() {
                   <label htmlFor="message" className="form-label">
                     Message
                   </label>
-                  <input type="text" className="form-control" id="message" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="message"
+                    required
+                  />
                 </fieldset>
               </div>
             </div>
@@ -42,7 +75,13 @@ export default function Transaction() {
                 Send Transfer
               </button>
             </div>
-          </form>
+          </Form>
+          {actionData?.success && (
+            <div className="alert alert-success mt-3">
+              <p>¡Transacción enviada con éxito!</p>
+              <pre>{JSON.stringify(actionData.transaction, null, 2)}</pre>
+            </div>
+          )}
         </div>
       </div>
     </div>
