@@ -1,6 +1,5 @@
 import type { User } from "@prisma/client";
 import { useLoaderData } from "@remix-run/react";
-
 import db from "~/service/db";
 
 export async function loader() {

@@ -1,24 +1,28 @@
+import { ActionFunctionArgs } from "@remix-run/node";
 import "./transfers.css";
 import { useActionData, Form } from "@remix-run/react";
+import db from "~/service/db";
+import { Transfer } from "@prisma/client";
 
 
 export const loader = async () => {
   return ({ message: "Complete los datos para la transacción" });
 };
 
-export const action = async ({ request }) => {
-  const formData = await request.formData();
-  const transaction = {
-    receptor: formData.get("receptor"),
-    amount: formData.get("amount"),
-    message: formData.get("message"),
+export const action = async ({ request }: ActionFunctionArgs ) => {
+  const formDataSave = await request.formData();
+  const transaction: Transfer = {
+    senderId: (parseInt(formDataSave.get("receptor") ?? "1", 10) || 1),
+    amount: formDataSave.get("amount"),     
+    recipientId: "1",     
+    stripePaymentId:"1" 
+  };
+  db.transfer.create(transaction)
+  return { success: true, transaction };
   };
 
-  console.log("Formulario enviado:", transaction);
-  return { success: true, transaction };
-};
 export default function TransactionForm() {
-  const actionData = useActionData(); 
+  const actionData = useActionData<typeof action>(); 
   return (
     <div className="row m-0">
       <div className="row text-center col-md-12 mt-3">

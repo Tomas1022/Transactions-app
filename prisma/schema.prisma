@@ -26,5 +26,4 @@ model Transfer {
   stripePaymentId String?
   createdAt       DateTime @default(now())
   recipient       User     @relation("ReceivedTransfers", fields: [recipientId], references: [id])
-  t               DateTime @default(now())
 }
